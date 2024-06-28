@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message">
+    <sys_rest_message action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <authentication_type>basic</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile display_value="training_api">dd3af54c935a0a104627796efaba1028</basic_auth_profile>
+        <basic_auth_user/>
+        <description/>
+        <name>anakage_category_api</name>
+        <oauth2_profile/>
+        <protocol_name/>
+        <rest_endpoint>https://training.anakage.com/api/teams/category?facility=training</rest_endpoint>
+        <sys_class_name>sys_rest_message</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-05-16 09:44:50</sys_created_on>
+        <sys_id>8df9714c935a0a104627796efaba1087</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>anakage_category_api</sys_name>
+        <sys_package display_value="ank" source="x_1364566_ank">3d08b588935a0a104627796efaba107c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ank">3d08b588935a0a104627796efaba107c</sys_scope>
+        <sys_update_name>sys_rest_message_8df9714c935a0a104627796efaba1087</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-05-16 09:44:50</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message>
+</record_update>

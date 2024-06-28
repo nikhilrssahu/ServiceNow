@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1364566_ank.IncidentAjax</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>IncidentAjax</name>
+        <script><![CDATA[var IncidentAjax = Class.create();
+IncidentAjax.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+		getCategories : function(){
+			var categories = []; // Initialize an empty array to store categories
+
+			try { 
+				var r = new sn_ws.RESTMessageV2('x_1364566_ank.anakage_category_api', 'Default GET');
+				var response = r.execute();
+				var responseBody = response.getBody();
+				var httpStatus = response.getStatusCode();
+
+				var jsonResponse = JSON.parse(responseBody);
+
+				if (jsonResponse && Array.isArray(jsonResponse)) {
+					// Loop through each element in the response and extract categories
+					for (var i = 0; i < jsonResponse.length; i++) {
+						var category = {};
+						category.name = jsonResponse[i].category;
+						category.icon = jsonResponse[i].category_fa_icon_class;
+						category.solutions = jsonResponse[i].solutions;
+						categories.push(category);
+					}
+					
+					// Create response XML element
+					var item = this.newItem();
+					// Add the array of incidents to the XML element
+					item.setAttribute("categories", JSON.stringify(categories)); // Adding incidents as an attribute in response XML
+				} else {
+					// Handle unexpected response format
+					gs.info('Unexpected response format: ' + responseBody);
+				}
+			} catch(ex) {
+				// Handle exceptions
+				gs.error('Exception occurred: ' + ex.message);
+			}
+	 }
+//   getRecentIncidents: function() {
+//     var num = this.getParameter("sysparm_num");
+
+//     // Query the incident table, sort by the "Opened" field and limit the records
+//     var inc = new GlideRecord("incident");
+//     inc.orderByDesc("opened_at");
+//     inc.setLimit(num);
+//     inc.query();
+
+//     // Build an array of objects which represent incidents
+//     var incidents = [];
+//     while(inc.next()) {
+//       var incident = {};
+//       incident.number = inc.number;
+//       incident.openedAt = inc.opened_at.getDisplayValue();
+//       incident.openedBy = inc.opened_by.getDisplayValue();
+//       incident.priority = inc.priority.getDisplayValue();
+//       incident.shortDescription = inc.short_description;
+//       incident.link = inc.getLink();
+
+//       incidents.push(incident);
+//     }
+
+//     // Create response XML element
+//     var item = this.newItem();
+//     // Add the array of incidents to the XML element
+//     item.setAttribute("incidents", JSON.stringify(incidents)); // Adding incidents as an attribute in response XML
+//   }
+});
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-05-16 09:37:14</sys_created_on>
+        <sys_id>7e587d88935a0a104627796efaba10f6</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>IncidentAjax</sys_name>
+        <sys_package display_value="ank" source="x_1364566_ank">3d08b588935a0a104627796efaba107c</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="ank">3d08b588935a0a104627796efaba107c</sys_scope>
+        <sys_update_name>sys_script_include_7e587d88935a0a104627796efaba10f6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-05-16 09:45:55</sys_updated_on>
+    </sys_script_include>
+</record_update>
